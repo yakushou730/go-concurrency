@@ -77,14 +77,14 @@ func pizzeria(pizzaMaker *Producer) {
 	var i = 0
 
 	// run forever or until we receive a quit notification
-	// try to make pizzas
+	// try to Makefile pizzas
 	for {
 		currentPizza := makePizza(i)
 
 		if currentPizza != nil {
 			i = currentPizza.pizzaNumber
 			select {
-			// we tried to make a pizza (we sent something to the data chanel)
+			// we tried to Makefile a pizza (we sent something to the data chanel)
 			case pizzaMaker.data <- *currentPizza:
 			case quitChan := <-pizzaMaker.quit:
 				// close channels
@@ -138,7 +138,7 @@ func main() {
 	color.Cyan("-----------------")
 	color.Cyan("Done for the day.")
 
-	color.Cyan("We made %d pizzas, but failed to make %d, with %d attempts in total.", pizzasMade, pizzasFailed, total)
+	color.Cyan("We made %d pizzas, but failed to Makefile %d, with %d attempts in total.", pizzasMade, pizzasFailed, total)
 
 	switch {
 	case pizzasFailed > 9:
